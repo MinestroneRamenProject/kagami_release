@@ -1,25 +1,53 @@
-name: Deploy React (Vite) to GitHub Pages
+name: Build & Deploy React (Vite) to GitHub Pages
 
 on:
   push:
     branches: ["main"]
 
-permissions:
-  contents: write      # ← これがないと gh-pages へ push できない
-  pages: write
-  id-token: write
-
 jobs:
+
+  # ① Build Job
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: 18
 
       - run: npm install
       - run: npm run build
+
+      # ※ React Router 対策（404.html 作成）
+      - name: Copy 404.html for SPA routing
+        run: cp dist/index.html dist/404.html
+
+      # build成果物(dist)を artifact としてアップロード
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-dist
+          path: dist
+
+
+  # ② Deploy Job
+  deploy:
+    needs: build   # build が成功してから動く
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # アップロードされた dist を取得
+      - name: Download build files
+        uses: actions/download-artifact@v4
+        with:
+          name: production-dist
+          path: dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
