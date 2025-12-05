@@ -1,0 +1,94 @@
+.jacket-wrapper{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.jacket-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min(50vw,300px);
+    height: min(50vw,300px);
+    background-color: white;
+    border: 1px solid blue;
+    border-radius: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: 0.5s translate;
+    translate: -50% -50%;
+
+    & h2{
+        position: absolute;
+        top: 1rem;
+        left: 50%;
+        translate:-50% 0;
+        color: black;
+        font-size: 1.2rem;
+    }
+    & .play-stop-img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+}
+.jacket-content:nth-of-type(1){
+    z-index: 13;
+    translate: calc(-50%) calc(-50% );
+}
+.jacket-content:nth-of-type(2){
+    z-index: 12;
+    translate: calc(-50% + 30px) calc(-50% + 30px);
+}
+.jacket-content:nth-of-type(3){
+    z-index: 11;
+    translate: calc(-50% + 30px*2) calc(-50% + 30px*2);
+}
+
+/* 再生ボタンのスタイル */
+.play-button {
+  width: 80px;      /* ボタンの大きさ */
+  height: 80px;
+  border-radius: 50%;
+  background-color: #2b5c6b; /* 深い青緑色 */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;     /* アイコンの色 */
+  box-shadow: 0 4px 15px rgba(43, 92, 107, 0.4); /* 影 */
+  transition: all 0.2s ease;
+  outline: none;
+  z-index: 20; /* カード内で一番手前に表示 */
+}
+
+/* ホバー時の動き（少し拡大） */
+.play-button:hover {
+  transform: scale(1.1);
+  background-color: #346e7f;
+}
+
+/* クリック時の動き（少し縮小） */
+.play-button:active {
+  transform: scale(0.95);
+}
+
+/* アイコン（SVG）のサイズ調整 */
+.play-button .icon {
+  width: 32px;
+  height: 32px;
+  fill: currentColor; /* 親のcolorを引き継ぐ */
+}
+
+/* 再生アイコン(▶)の位置微調整 */
+.play-button .play-icon-adjust {
+  margin-left: 4px;
+}

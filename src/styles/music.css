@@ -1,0 +1,159 @@
+.time-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 5px;
+}
+.music-footer {
+    z-index: 10;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
+.volume-bar-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    margin-top: 1rem;
+
+    & .volume-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 4px;
+        border-radius: 2px;
+        cursor: pointer;
+        accent-color: rgb(77, 213, 255);
+    }
+
+    & .volume-icon {
+        display: flex;
+        justify-content: center;
+    }
+
+    & .play-list-icon {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    fill: white !important;
+}
+
+.off>.img {
+    opacity: .5 !important;
+}
+
+.play-music-settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    /* シークバー */
+    & .seek-bar-container {
+        width: 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & .seek-bar {
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            cursor: pointer;
+            accent-color: white;
+            /* スライダーの色 */
+        }
+    }
+
+    & .play-music-buttons {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        & .icon-button {
+            padding: 0;
+            width: 100%;
+            height: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            outline: none;
+            border: none !important;
+            background-color: black;
+        }
+    }
+}
+
+.base.background1 {
+    background-image: url('../assets/music-background1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
+.base.background2 {
+    background-image: url('../assets/music-background2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
+
+.music-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.music-back-button{
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 6px 8px;
+    color: aliceblue;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    margin-left: 0;
+}
+.music-settings-button{
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 6px 8px;
+    color: aliceblue;
+    margin-left: auto;
+}
+.imgMood {
+    width: auto;
+    height: 60px;
+    object-fit: contain;
+}
+.imgSettings {
+    width: auto;
+    height: 60px;
+    object-fit: contain;
+}

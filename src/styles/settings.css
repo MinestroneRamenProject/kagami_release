@@ -1,0 +1,148 @@
+/* Header: fixed to top */
+.settings-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    box-shadow: 0 1px 8px rgba(255, 255, 255, 0.06);
+    z-index: 1000;
+}
+.settings-back-button{
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 6px 8px;
+    color: #ffffff;
+}
+
+/* Page layout adjustments */
+.settings-page{
+    padding-top: var(--header-height, 56px);
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: var(--text-color, #fff);
+}
+
+.settings-content{
+    padding: 24px 16px;
+}
+
+/* Credits section */
+.credits{
+    padding: 20px 32px 48px;
+    margin-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    background: rgba(66, 66, 66, 0.589);
+}
+.credits h2{
+    margin: 0 0 12px 0;
+    font-size: 36px;
+}
+.credits-list{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px 24px;
+}
+.credits-item dt{
+    font-weight: 700;
+    font-size: 26px;
+    color: rgba(255,255,255,0.85);
+}
+.credits-item dd{
+    margin: 4px 0 0 0;
+    color: rgba(255,255,255,0.75);
+    font-size: 20px;
+}
+.credits-link a{
+    color: var(--link-color, #9bd1ff);
+    text-decoration: none;
+}
+.credits-link a:hover{
+    text-decoration: underline;
+}
+
+@media (min-width: 640px){
+    .credits-list{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Modal / bottom sheet styles */
+.settings-modal-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 2000;
+}
+.settings-modal{
+    width: 100%;
+    max-width: 720px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    background: var(--modal-bg, #111);
+    box-shadow: 0 -8px 30px rgba(0,0,0,0.6);
+    transform: translateY(0);
+    animation: slideUp 320ms cubic-bezier(.2,.9,.2,1) forwards;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+@keyframes slideUp{
+    from{ transform: translateY(100%); }
+    to{ transform: translateY(0); }
+}
+
+.settings-modal .settings-header{
+    /* Fixed header area inside modal; not part of scrollable content */
+    position: relative;
+    flex: 0 0 var(--header-height, 56px);
+    padding: 12px 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+    backdrop-filter: blur(6px);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.4);
+    z-index: 20;
+}
+
+/* Scrollable body under fixed header */
+.settings-modal-body{
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px 16px 24px;
+}
+
+/* Small tweak to credits spacing in modal */
+.settings-modal .credits{
+    padding: 16px 20px 36px;
+}
+
+.settings-content .setting-item{
+    margin-bottom: 8px;
+    font-size: 26px;
+}
+
+/* 追加：select を大きく見せる */
+.settings-content .setting-item select {
+    font-size: 18px;           /* フォントを大きく（必要なら inherit で親の 26px を使う） */
+    padding: 10px 14px;        /* 内側の余白で高さを確保 */
+    height: 48px;              /* 明示的な高さ（ブラウザにより効き方が違う） */
+    line-height: 1.2;          /* テキストの縦方向位置調整 */
+    min-width: 220px;          /* 最低横幅 */
+    width: 100%;               /* 親幅に合わせたい場合 */
+    box-sizing: border-box;
+    -webkit-appearance: none;  /* ネイティブ矢印を消す（カスタム矢印を使うとき） */
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}

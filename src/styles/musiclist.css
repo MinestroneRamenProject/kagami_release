@@ -1,0 +1,40 @@
+.music-list {
+  z-index: 1100; /* above most app content but below modal overlay if any */
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: var(--header-height, 56px); /* sit below header */
+  height: calc(100vh - var(--header-height, 56px));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 1rem 1.5rem;
+  background-color: #000;
+  color: #fff;
+  transform: translateY(100%);
+  transition: transform 320ms cubic-bezier(.2,.9,.2,1);
+  overflow: auto;
+}
+
+.music-list .playlist-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.music-list .playlist-header .close{ cursor: pointer; }
+
+.music-list .music-list-item{
+  padding: .5rem 0;
+  border-bottom: 1px solid rgba(128,128,128,0.2);
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.music-list .music-list-content p{ margin-left: 1rem; }
+.music-list .list-img{ margin-right: 1rem; display:flex; align-items:center; }
+
+.music-list.active{ transform: translateY(0); }
