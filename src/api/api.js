@@ -1,4 +1,4 @@
-const API_ROOT_URL = "http://34.85.82.192:443"; 
+const API_ROOT_URL = "http://34.85.82.192:80"; 
 
 export const fetchMusic = async (song_path) => { 
     try {
