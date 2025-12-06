@@ -11,7 +11,7 @@ function App() {
   const { isSettingsOpen } = useSettings()
 
   return (
-    <Router>
+    <Router basename="/kagami_release">
       <Routes>
         <Route path='/' element={<Music />} />
         <Route path='/mood' element={<Mood />} />
